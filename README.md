@@ -1,46 +1,46 @@
-# Retail Sales ETL & SQL Analytics Pipeline
+# Retail Sales ETL & Analytics Pipeline
 
-## Goal
-Build a small, interview-ready data engineering pipeline using a real retail transaction dataset.
+A beginner-to-intermediate data engineering project using Python/Pandas and SQL Server.
 
-## Flow
-Kaggle CSV -> Python/Pandas cleaning -> validation -> transformed CSV -> SQL database -> analytical SQL
+## Architecture
+Raw CSV → Python/Pandas → Profiling → Cleaning & Validation → Transformation → Cleaned CSV → PyODBC → SQL Server → SQL Analytics
 
-## Dataset
-Retail Sales Dataset by Terence Katua, available on Kaggle.
+## Technologies
+Python, Pandas, Jupyter Notebook, PyODBC, SQL Server, SSMS.
 
-Source:
-https://www.kaggle.com/datasets/terencekatua/retail-sales-dataset
+## Python ETL
+- Extract retail transactions from CSV
+- Profile structure and data quality
+- Validate nulls, duplicates, age, quantity, price, and transaction amounts
+- Convert dates
+- Create year/month/day features
+- Create age groups
+- Create weekend flag
+- Export processed data
+- Load into SQL Server
 
-The repository also has a public mirror of the dataset for inspection.
-
-## Python transformations
-- Standardize column names
-- Parse dates
-- Convert numeric fields
-- Remove duplicate transaction IDs
-- Remove records with required missing fields
-- Reject invalid ages, quantities and prices
-- Recalculate sales amount from quantity * price
-- Create year/month/month name
-- Create weekday and weekend flag
-- Create customer age groups
-
-## Data-quality checks
-- Unique transaction IDs
-- Required fields are populated
-- Positive quantity and price
-- Recalculated sales amount is internally consistent
-
-## SQL layer
-The cleaned data is loaded into `retail_sales`. The SQL script calculates:
-- Revenue
-- Units sold
-- Average order value
-- Revenue by category
-- Monthly revenue
+## SQL
+- KPI analysis
+- Category and monthly revenue
 - Top customers
-- Weekday vs weekend performance
+- Weekend vs weekday
+- CTE + CASE customer segmentation
+- RANK window function
+- Cumulative revenue
+- Post-load quality checks
 
-## Project scope
-This is intentionally a small batch ETL project. It demonstrates core data engineering concepts without adding unnecessary cloud, Spark, Kafka or ML complexity.
+## Key Results
+- 1,000 transactions
+- 1,000 customers
+- 2,514 units sold
+- 456,000 total revenue
+- 456 average transaction value
+- Electronics: highest category revenue (156,905)
+- May: highest monthly revenue (53,150)
+- September: lowest monthly revenue (23,620)
+- High-value segment: 202 customers, 286,800 revenue
+
+## Files
+- 01_retail_sales_etl.ipynb
+- retail_sales_analysis.sql
+- retail_sales_cleaned.csv
